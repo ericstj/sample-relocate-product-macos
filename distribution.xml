@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <options customize="never" require-scripts="true" hostArchitectures="x86_64,arm64"/>
+    <choices-outline>
+        <line choice="defaultInstallLocation"/>
+        <line choice="alternateInstallLocation"/>
+    </choices-outline>
+    <choice id="alternateInstallLocation" visible="true" selected="UseAlternate()" customLocation="/usr/local/share/ericstj_test/alternate">
+        <pkg-ref id="ericstj.sample"/>
+    </choice>
+    <choice id="defaultInstallLocation" visible="true" selected="!UseAlternate()" >
+        <pkg-ref id="ericstj.sample"/>
+    </choice>
+    <script>
+<![CDATA[
+function UseAlternate() {
+    // just to demonstrate
+    return true;
+}
+]]>
+    </script>
+    <pkg-ref id="ericstj.sample" version="1.0.0" onConclusion="none">ericstj.sample.pkg</pkg-ref>
+</installer-gui-script>
